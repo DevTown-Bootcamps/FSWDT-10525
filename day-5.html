@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* text-color */
+        .colored-text{
+            color: blue;
+            background-color: lightgray;
+        }
+
+        /* background-image */
+
+        .bg-img{
+            width: 300px;
+            height: 300px;
+            color: white;
+            background-image: url(https://www.bestfreewebresources.com/wp-content/uploads/2010/05/flower/flower__by_SynthetikFlesh.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .block{
+            display: block;
+            background: #f8b400;
+            margin-bottom: 10px;
+        }
+        .block{
+            display: inline;
+            margin-bottom: 10px;
+        }
+
+        .relative-box{
+            position: relative;
+            width: 300px;
+            height: 50px;
+            background-color: #f8b400;
+        }
+
+        .absolute-box{
+            position: absolute;
+            background: red;
+            color: white;
+            padding: 5px;
+        }
+
+        .flex{
+           display: flex;
+           flex-direction: row;
+           justify-content: space-around;
+           align-items: center;
+        }
+
+        .card{
+            width: 300px;
+            height: 300px;
+            color: white;
+            background: red;
+            margin: 10px;
+        }
+        
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 10px;
+        }
+
+        .cardgrid{
+            width: 300px;
+            height: 300px;
+            color: white;
+            background: blue;
+        }
+        
+        /* responsiveness in image */
+        .res-img{
+            max-width: 100%;
+            height: auto;
+        }
+
+        .cover-img{
+            width: 500px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .contain-img{
+            width: 500px;
+            height: 200px;
+            object-fit: contain;
+        }
+        /* create two 1)flex styling-implement row and column flex 2)grid layout- 2,1fr or 3,1fr */
+
+    </style>
+</head>
+<body>
+    
+    <!-- text color -->
+     <p class="colored-text">This is a color tutorial</p>
+
+     <div class="bg-img">
+         Welcome to bg tutorial
+     </div>
+
+     <!-- Display and positioning -->
+     <!-- display  -->
+     <div class="block">Block element</div>
+      <span class="inline">Inline element</span>
+     
+      <!-- positioning -->
+      <div class="relative-box">
+        text of parent
+        <div class="absolute-box">This is absolute text</div>
+      </div>
+
+      <!-- flexbox -->
+       <div class="flex">
+           <div class="card">This is a smple div 1</div>
+           <div class="card">This is a smple div 2</div>
+           <div class="card">This is a smple div 3</div>
+        </div>
+
+        <div class="flex">
+            <div class="card">This is a smple div 4</div>
+            <div class="card">This is a smple div 5</div>
+            <div class="card">This is a smple div 6</div>
+         </div>
+
+
+         <!-- Grid -->
+         <div class="grid">
+         <div class="cardgrid">This is a smple div 1</div>
+         <div class="cardgrid">This is a smple div 2</div>
+         <div class="cardgrid">This is a smple div 3</div>
+         <div class="cardgrid">This is a smple div 4</div>
+         <div class="cardgrid">This is a smple div 5</div>
+         <div class="cardgrid">This is a smple div 6</div>
+      </div>
+
+      <!-- Image -->
+       <img class="res-img" src="https://www.bestfreewebresources.com/wp-content/uploads/2010/05/flower/flower__by_SynthetikFlesh.jpg" alt="Example image">
+
+      <!-- object fit -->
+      <img class="cover-img" src="https://www.bestfreewebresources.com/wp-content/uploads/2010/05/flower/flower__by_SynthetikFlesh.jpg" alt="Example image">
+      <img class="contain-img" src="https://www.bestfreewebresources.com/wp-content/uploads/2010/05/flower/flower__by_SynthetikFlesh.jpg" alt="Example image">
+
+</body>
+</html>
