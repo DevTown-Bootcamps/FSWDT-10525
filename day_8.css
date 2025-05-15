@@ -248,3 +248,30 @@ img{
     right: 10px;
     bottom: 10px;
 }
+
+#footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 75px;
+    background-color: #ececec;
+}
+
+#footer p, #footer a{
+  color: rgb(109, 109, 109);
+  text-decoration: none;
+}
+
+#footer a:hover{
+    color: #088178;
+}
+
+#footer .about a{
+    display: block;
+    padding: 8px 0;
+}
+
+#footer .myaccount a{
+  display: block;
+  padding: 8px 0;
+}
