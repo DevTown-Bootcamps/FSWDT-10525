@@ -1,0 +1,45 @@
+<!-- DOM-Documentation object model-provided by browser and links your js with HTML,CSS. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo" class="demo">Hello</p>
+    <button onClick="ChangeText()">Click Me</button>
+
+    <div id="innerhtml"></div>
+
+    <button id="btn">Click me</button>
+
+    <script>
+        // Selection based on id and class
+        let para=document.getElementById("demo");
+        console.log(para.innerText);
+        let paragaraph=document.getElementsByClassName("demo");
+        console.log(paragaraph.innerText);
+        // changing text
+        function ChangeText(){
+            document.getElementById("demo").innerText="Hello this is new text";
+            let para=document.getElementById("demo");
+            console.log(para.innerText);
+        }
+
+        // changing tags
+        document.getElementById("innerhtml").innerHTML= "<strong>Hello, welcome to my site</strong>";
+
+        // changing color
+        document.getElementById("demo").style.color="blue";
+        document.getElementById('demo').style.fontSize="30px";
+
+        // Handling click event
+        document.getElementById('btn').addEventListener("click", function(){
+            alert("Button was clicked");
+        });
+
+        
+    </script>
+</body>
+</html>

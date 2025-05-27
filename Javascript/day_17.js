@@ -141,17 +141,29 @@
 // char();
 
 // Closure
-function counterFunc(){
-    let count=0;
+// function counterFunc(){
+//     let count=0;
 
-    return function(){
-        count++;
-        return count;
-    };
+//     return function(){
+//         count++;
+//         return count;
+//     };
+// }
+
+// const counter1=counterFunc();
+// console.log(counter1());
+// console.log(counter1());
+// console.log(counter1());
+
+// create a function to take n number of parameter and to calculate the product of all numbers using arraow finction
+// in case to multiple pramater, we store the input in form of array
+const prd = (...numbers) => {
+    let result=1;
+    for(let i = 0; i < numbers.length; i++) {
+        result=result*numbers[i];
+    }
+    return result;
 }
+console.log(prd(2,3,4,5));
 
-const counter1=counterFunc();
-console.log(counter1());
-console.log(counter1());
-console.log(counter1());
 
