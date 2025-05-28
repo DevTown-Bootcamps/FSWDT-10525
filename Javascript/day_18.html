@@ -43,3 +43,40 @@
     </script>
 </body>
 </html>
+
+<!-- Create a js script to select a element by its id and change the text in that particular selected element -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day_18</title>
+    <script src="day_18.js"></script>
+</head>
+<body>
+    <p id="demo">Hello</p>
+    <button onclick="changeText()">ClickToChange</button>
+
+    <script>
+        function changeText(){
+    let text = document.getElementById("demo");
+    text.innerText= "This is new text after clicking";
+}
+    </script>
+</body>
+</html>
+
+
+
+
+
+<!-- Passing a whole object of css instead of passing each styles individually -->
+let select=getElementById("demo");
+
+const style = {
+  margin:20px;
+  padding:30px;
+  fontSize:25px;
+}
+
+Object.assign(select.style,style);

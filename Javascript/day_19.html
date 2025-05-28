@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <button onclick="addItem()">Add items</button>
+    <p id="para">This is the para that I am trying to remove</p>
+    <button onclick="remove()">Remove item</button>
+
+    <a href="https://github.com/" id="link">Click me</a>
+    <button onclick="changeLink()">Change the URL</button>
+
+    <img id="image" src="" alt="Alt">
+    <button onclick="changeAlt()">Click to change alt</button>
+
+    <p class="color">One</p>
+    <p class="color">two</p>
+    <p class="color">three</p>
+    <p class="color">four</p>
+
+    <input type="text" id="name" placeholder="Enter your name"/>
+    <button onclick="submit()">Submit</button>
+    <p id="displayName"></p>
+
+    <input type="password" name="Password" id="password" placeholder="Enter your password"/>
+    <button onclick="toggle()">Show /Hide Password</button>
+
+    <script>
+    
+    // Appending new element
+    function addItem(){
+        let li=document.createElement("li");
+        li.textContent="Apple";
+        document.getElementById("list").appendChild(li);
+    }
+    
+    // removing Element
+    function remove(){
+        document.getElementById("para").remove();
+    }
+
+    // changing attribute
+    function changeLink(){
+        document.getElementById("link").setAttribute("href","https://www.geeksforgeeks.org/system-design-life-cycle-phases-models-and-use-cases/")
+    }
+
+    function changeAlt(){
+        document.getElementById("image").setAttribute("alt","New Alt");
+    }
+
+    // Looping through Element
+     let element=document.querySelectorAll(".color");
+     element.forEach(function(el){
+        el.style.color="red";
+     });
+
+     <!-- Getting input value -->
+     function submit(){
+        let name=document.getElementById("name").value;
+        document.getElementById("displayName").innerText=name;
+     }
+
+    //  Show and hide password
+    function toggle(){
+        const input= document.getElementById("password");
+        input.type=input.type==="password" ? "text":"password";
+        console.log(input.type);
+    }
+    </script>
+</body>
+</html>
+
+
+<!-- Create a ul tag and create three buttons with it, each button will add three difrrent li in the ul tag -->
+
+
