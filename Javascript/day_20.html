@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark-theme{
+            background-color: #121212;
+            color: white;
+        }
+        .hightlight{
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <p>Hello this is tutorial for dark mode</p>
+    <button onclick="darktheme()">Dark Mode</button>
+
+
+    <form id="userform">
+        <input type="text" id="name" placeholder="Enter your name"/>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="result"></p>
+
+    <p id="mypara">Click the bellow button to see changes</p>
+    <button onclick="highlight()">Highlight</button>
+
+
+    <div id="card">This is a card to clone</div>
+    <button onclick="dupli()">Duplicate</button>
+
+    <div id="box" style="width: 100px; height: 100px; background: red;"></div>
+    <button onclick="moveBox()">Move</button>
+
+    
+    <script>
+         function darktheme(){
+            document.body.classList.toggle("dark-theme");
+         }
+
+         document.getElementById("userform").addEventListener("submit",function(e){
+            e.preventDefault();
+            let name=document.getElementById("name").value;
+            document.getElementById("result").innerText=`Hello, ${name}`;
+         });
+
+         function highlight(){
+            const para=document.getElementById("mypara");
+            para.classList.add("hightlight");
+         }
+
+         function dupli(){
+            const card=document.getElementById("card");
+            const clone=card.cloneNode(true);
+            document.body.appendChild(clone);
+         }
+
+         function moveBox(){
+            let box=document.getElementById("box");
+            let pos=0;
+            let id=setInterval(()=>{
+                if(pos>=600) clearInterval(id);
+                else{
+                    pos++;
+                    box.style.transform=`translateX(${pos}px)`;
+                }
+            },5)
+         }
+    </script>
+</body>
+</html>
+
+<!-- Mouse click counter -->

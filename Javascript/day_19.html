@@ -29,6 +29,8 @@
     <input type="password" name="Password" id="password" placeholder="Enter your password"/>
     <button onclick="toggle()">Show /Hide Password</button>
 
+    <input type="text" id="keybox" placeholder="Anything...."/>
+
     <script>
     
     // Appending new element
@@ -70,11 +72,19 @@
         input.type=input.type==="password" ? "text":"password";
         console.log(input.type);
     }
+
+    // Key press detection
+    document.getElementById("keybox").addEventListener("keydown",function(e){
+        console.log("Key is pressed");
+    });
+
     </script>
 </body>
 </html>
 
 
-<!-- Create a ul tag and create three buttons with it, each button will add three difrrent li in the ul tag -->
+
+
+<!-- Creat the para and try removing it using js -->
 
 
