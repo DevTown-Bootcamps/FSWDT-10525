@@ -18,3 +18,6 @@ button.forEach(button =>{
         }
     });
 });
+
+// 1) Calculator application-instead of using eval create logic from scratc
+// 2) Make a digital clock
