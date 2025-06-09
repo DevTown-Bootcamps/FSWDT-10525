@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listners</title>
+</head>
+<body>
+     <!-- Click Event -->
+      <button id="clickBtn">Click Me</button>
+
+      <!-- Hover event Listners -->
+       <div id="hoverBox">Hover over me</div>
+
+       <!-- Keydown Event -->
+        <input type="text" id="keyInput" placeholder="Type something here"/>
+
+        <!-- change event -->
+         <select id="selectMenu">
+            <option value="">Choose an option</option>
+            <option value="Apple">Apple</option>
+            <option value="Pineapple">PineApple</option>
+            <option value="Banana">Banana</option>
+            <option value="Cherry">Cherry</option>
+         </select>
+
+         <!-- Submit -->
+
+         <form id="form">
+            <input type="text" id="nameInput" placeholder="Enter any text"/>
+            <button type="submit">Submit</button>
+         </form>
+      <!-- Script -->
+       <script>
+        let count=0;
+         document.getElementById('clickBtn').addEventListener('click',function(){
+            count=count+1;
+            console.log(count);
+         });
+
+        //  Hover js code
+        document.getElementById("hoverBox").addEventListener('mouseover',function(){
+            this.style.background='orange';
+            this.textContent="Hovered";
+        });
+
+        document.getElementById("hoverBox").addEventListener("mouseout",function(){
+            this.style.background="white";
+            this.textContent="Hover over me";
+        });
+
+        document.getElementById("keyInput").addEventListener("keydown",function(event){
+            console.log("key pressed",event.key);
+        });
+
+        // Change Event
+        document.getElementById("selectMenu").addEventListener("change",function(){
+          alert("Your selection is:" + this.value);
+        });
+
+        // Submit event
+        document.getElementById("form").addEventListener("submit",function(e){
+            e.preventDefault();
+            const name=document.getElementById("nameInput").value;
+            alert("Your name is: "+ name);
+        })
+       </script>
+</body>
+</html>
+
+
+<!-- Add a click event listner to change the text inside a p tag when a button is clicked -->
+ 
