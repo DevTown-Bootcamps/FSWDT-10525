@@ -68,14 +68,14 @@ app.listen(3000,()=>{
 
 
 
-const expressStudent = require('express');
-const studentApp = expressStudent();
-studentApp.use(expressStudent.json());
+// const expressStudent = require('express');
+// const studentApp = expressStudent();
+// studentApp.use(expressStudent.json());
 
-let students = [
-  { id: 1, name: 'Alice', course: 'Math', active: true },
-  { id: 2, name: 'Bob', course: 'Science', active: false }
-];
+// let students = [
+//   { id: 1, name: 'Alice', course: 'Math', active: true },
+//   { id: 2, name: 'Bob', course: 'Science', active: false }
+// ];
 
 // // 📥 GET all students
 // studentApp.get('/api/students', (req, res) => {
