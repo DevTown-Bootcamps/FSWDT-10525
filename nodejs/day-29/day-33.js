@@ -1,6 +1,7 @@
 const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
+const bcrypt=require('bcryptjs');
 
 //mongodb://localhost:27017/{name_of_DB}
 const MONGO_URL='mongodb://localhost:27017/todoDB';
@@ -10,6 +11,20 @@ const PORT=5000;
 
 app.use(cors());
 app.use(express.json());
+
+const userSchema=new mongoose.Schema({
+  username:{
+    type:String,
+    required:true,
+    unique:true  
+  },
+  password:{
+    type:String,
+    required:true
+  }
+});
+
+const User=mongoose.model("User",userSchema);
 
 //MongoDB model
 const todoSchema=new mongoose.Schema({
@@ -24,6 +39,28 @@ const todoSchema=new mongoose.Schema({
 },{timestamps:true});
 
 const Todo=mongoose.model('Todo',todoSchema);
+
+//register api
+app.post("/api/register",async(req,res)=>{
+   const {username,password} =req.body;
+
+   try{
+     const userExist=await User.findOne({username});
+
+     if(userExist) return res.status(400).json({message:"This username already exists"});
+
+     const hashPassword=await bcrypt.hash(password,10);
+
+     const newUser=new User({
+      username,
+      password:hashPassword
+     });
+     await newUser.save();
+     res.status(201).json({message:"user has been registered"});
+   }catch(err){
+     res.status(500).json({message:"Internal server error"});
+   }
+})
 
 //Get all todos
 app.get('/api/todos',async(req,res)=>{
