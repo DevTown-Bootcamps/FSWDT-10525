@@ -2,7 +2,8 @@ const express=require('express');
 const mongoose=require('mongoose');
 const cors=require('cors');
 const bcrypt=require('bcryptjs');
-
+const jwt=require('jsonwebtoken');
+const JWT_SECRET='jashdjshfdj_46563dgfgd_weeeew...dihghfghreihgfghig';
 //mongodb://localhost:27017/{name_of_DB}
 const MONGO_URL='mongodb://localhost:27017/todoDB';
 
@@ -40,6 +41,19 @@ const todoSchema=new mongoose.Schema({
 
 const Todo=mongoose.model('Todo',todoSchema);
 
+function authenticateToken(req,res,next){
+   const authHeader=req.Header['authorization'];
+   const token=authHeader && authHeader.split(' ')[1];
+
+   if(!token) return res.status(401).json({messgae:"Token not found"});
+
+   jwt.verify(token,JWT_SECRET,(ERR,USER=>{
+    if(err) return res.status(403).json({message:"Invalid token"});
+    req.user=user;
+    next();
+   }))
+};
+
 //register api
 app.post("/api/register",async(req,res)=>{
    const {username,password} =req.body;
@@ -74,16 +88,16 @@ app.post("/api/login",async(req,res)=>{
    const isMatch=await bcrypt.compare(password,user.password);
 
    if(!isMatch) return res.status(400).json({messgae:"Password did not match"});
-   else{
-    res.status(200).json({message:"Login success"});
-   }
+
+   const token=jwt.sign({id:user_id},JWT_SECRET,{expiresIn:'1h'});
+   res.status(200).json({message:"Login Success",token});
   }catch(err){
 
   }
 })
 
 //Get all todos
-app.get('/api/todos',async(req,res)=>{
+app.get('/api/todos',authenticateToken,async(req,res)=>{
     try{
       const todos=await Todo.find();
       res.json(todos);
@@ -93,7 +107,7 @@ app.get('/api/todos',async(req,res)=>{
 });
 
 //POST  to create new todo
-app.post('/api/todos',async(req,res)=>{
+app.post('/api/todos',authenticateToken,async(req,res)=>{
     try{
       const { title }=req.body;
       const newTodo=new Todo({title});
@@ -106,7 +120,7 @@ app.post('/api/todos',async(req,res)=>{
 
 
 // PUT update todo by ID
-app.put('/api/todos/:id', async (req, res) => {
+app.put('/api/todos/:id',authenticateToken, async (req, res) => {
   try {
     const { title, completed } = req.body;
     const updatedTodo = await Todo.findByIdAndUpdate(
@@ -121,7 +135,7 @@ app.put('/api/todos/:id', async (req, res) => {
 });
 
 // DELETE todo by ID
-app.delete('/api/todos/:id', async (req, res) => {
+app.delete('/api/todos/:id',authenticateToken, async (req, res) => {
   try {
     await Todo.findByIdAndDelete(req.params.id);
     res.json({ message: 'Todo deleted successfully' });
