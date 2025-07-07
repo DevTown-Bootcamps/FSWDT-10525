@@ -89,7 +89,7 @@ app.post("/api/login",async(req,res)=>{
 
    if(!isMatch) return res.status(400).json({messgae:"Password did not match"});
 
-   const token=jwt.sign({id:user_id},JWT_SECRET,{expiresIn:'1h'});
+   const token=jwt.sign({id:user._id},JWT_SECRET,{expiresIn:'1h'});
    res.status(200).json({message:"Login Success",token});
   }catch(err){
 
@@ -155,3 +155,10 @@ mongoose.connect(MONGO_URL,{
     });
 })
 .catch(err=> console.log("MongoDB connection error",err));
+
+
+//POST: /api/login
+
+//Body: {"username":"anshul","password" : "123456"}
+
+//response: {token:"JWT_TOKEN"}
