@@ -162,3 +162,4 @@ mongoose.connect(MONGO_URL,{
 //Body: {"username":"anshul","password" : "123456"}
 
 //response: {token:"JWT_TOKEN"}
+
